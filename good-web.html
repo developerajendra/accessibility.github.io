@@ -4,9 +4,10 @@
 
 
 <head>
-    <title>W3.CSS Template</title>
+    <title>My Food - Restaurant and Catering Service</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore our delicious food offerings and catering services">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
     <style>
@@ -203,8 +204,44 @@
 
         .required-field,
         .form-container span {
-            color: #e50000;
+            color: #cc0000;
             background-color: #f9f9f9;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Improved focus styles */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 3px solid #1a73e8;
+            outline-offset: 2px;
+        }
+
+        /* Skip link improvements */
+        .mw-jump-link:focus {
+            position: fixed !important;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            padding: 1rem;
+            background: #ffffff;
+            border: 2px solid #1a73e8;
+            clip: auto !important;
+            width: auto !important;
+            height: auto !important;
         }
     </style>
 </head>
@@ -217,12 +254,12 @@
     <header class="header">
         <div class="nav-wrapper">
             <nav class="navigation w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left"
-                style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
-                <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</a>
-                <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">Home</a>
+                style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar" aria-label="Mobile navigation">
+                <button aria-label="Close Menu" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</button>
+                <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button" aria-current="page">Home</a>
                 <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a>
                 <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
-                <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">Locations</a>
+                <a href="#locations" onclick="w3_close()" class="w3-bar-item w3-button">Locations</a>
                 <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
             </nav>
         </div>
@@ -283,9 +320,9 @@
 
 
     <!-- !PAGE CONTENT! -->
-    <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+    <main class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-        <div class="w3-padding-16 w3-center font-size">
+        <div class="w3-padding-16 w3-center font-size" role="region" aria-label="Font size controls">
             <label for="fontSize">Change Font Size: </label>
             <select id="fontSize" onchange="changeFontSize()">
                 <option value="small">Small</option>
@@ -334,17 +371,17 @@
             </div>
 
 
-            <div class="w3-quarter">
-                <img src="https://www.w3schools.com/w3images/sandwich.jpg" alt="Sandwich" style="width:100%">
+            <div class="w3-quarter" role="article">
+                <img src="https://www.w3schools.com/w3images/sandwich.jpg" alt="A freshly made NYC style sandwich with lettuce and tomatoes" style="width:100%">
                 <h3>The Perfect Sandwich, A Real NYC Classic</h3>
                 <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-                <button class="read-more-btn second" onclick="openPopup()">Read More</button>
+                <button class="read-more-btn second" onclick="openPopup()" aria-expanded="false" aria-controls="popup">Read More</button>
             </div>
 
             <!-- Popup -->
-            <div id="popup" class="popup">
+            <div id="popup" class="popup" role="dialog" aria-labelledby="popup-title" aria-modal="true" hidden>
                 <div class="popup-content">
-                    <span class="close-btn" onclick="closePopup()" tabindex="0">&times;</span>
+                    <span class="close-btn" onclick="closePopup()" tabindex="0" aria-label="Close dialog">&times;</span>
                     <h3>More About The Perfect Sandwich</h3>
                     <p>This sandwich is a classic NYC staple, known for its delicious combination of ingredients...</p>
                 </div>
@@ -472,30 +509,31 @@
                     message here:
                 </p>
                 <div class="form-container">
-                    <form action="/action_page.php" target="_blank">
-                        <h4>Required fields are in <span>red</span> and marked with <span>*</span></h4>
+                    <form action="/action_page.php" target="_blank" novalidate aria-labelledby="contact-form-title">
+                        <h4 id="contact-form-title">Required fields are in <span class="sr-only">red</span> and marked with <span aria-label="required">*</span></h4>
                         <p>
-                            <label class="required-field">Name *</label>
-                            <input class="w3-input w3-padding-16" type="text" id="name" placeholder="Name" required
-                                name="Name">
+                            <label for="name" class="required-field">Name *</label>
+                            <input class="w3-input w3-padding-16" type="text" id="name" 
+                                name="Name" required aria-required="true" aria-describedby="name-error"
+                                autocomplete="name">
                         </p>
                         <p>
                             <label for="people">How many people</label>
                             <input class="w3-input w3-padding-16" type="number" id="people"
-                                placeholder="How many people" name="People">
+                                name="People" min="1" max="100" aria-label="Number of people">
                         </p>
                         <p>
-                            <label class="required-field">Date and time *</label>
+                            <label for="date" class="required-field">Date and time *</label>
                             <input class="w3-input w3-padding-16" type="datetime-local" id="date"
-                                placeholder="Date and time" required name="date" value="2020-11-16T20:00">
+                                required name="date" value="2020-11-16T20:00" aria-required="true">
                         </p>
                         <p>
                             <label for="message">Message / Special requirements</label>
-                            <input class="w3-input w3-padding-16" type="text" id="message"
-                                placeholder="Message / Special requirements" required name="Message">
+                            <textarea class="w3-input w3-padding-16" id="message"
+                                name="Message" rows="4" aria-label="Special requirements or message"></textarea>
                         </p>
                         <p>
-                            <button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button>
+                            <button class="w3-button w3-light-grey w3-section" type="submit" aria-label="Submit contact form">SEND MESSAGE</button>
                         </p>
                     </form>
                 </div>
@@ -559,19 +597,47 @@
         <script>
             // Script to open and close sidebar
             function w3_open() {
-                document.getElementById("mySidebar").style.display = "block";
+                const sidebar = document.getElementById("mySidebar");
+                sidebar.style.display = "block";
+                sidebar.setAttribute("aria-hidden", "false");
             }
 
             function w3_close() {
-                document.getElementById("mySidebar").style.display = "none";
+                const sidebar = document.getElementById("mySidebar");
+                sidebar.style.display = "none";
+                sidebar.setAttribute("aria-hidden", "true");
             }
 
             function openPopup() {
-                document.getElementById("popup").style.display = "block";
+                const popup = document.getElementById("popup");
+                const trigger = document.activeElement;
+                popup.style.display = "block";
+                popup.removeAttribute("hidden");
+                popup.setAttribute("aria-hidden", "false");
+                
+                // Store the trigger element to return focus later
+                popup.dataset.lastFocus = trigger;
+                
+                // Focus the first focusable element in the popup
+                const firstFocusable = popup.querySelector("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+                if (firstFocusable) firstFocusable.focus();
+                
+                // Update the trigger button's aria-expanded state
+                trigger.setAttribute("aria-expanded", "true");
             }
 
             function closePopup() {
-                document.getElementById("popup").style.display = "none";
+                const popup = document.getElementById("popup");
+                popup.style.display = "none";
+                popup.setAttribute("hidden", "");
+                popup.setAttribute("aria-hidden", "true");
+                
+                // Return focus to the trigger element
+                const lastFocus = document.querySelector(popup.dataset.lastFocus);
+                if (lastFocus) {
+                    lastFocus.focus();
+                    lastFocus.setAttribute("aria-expanded", "false");
+                }
             }
             // Add event listener for keydown event
             document.addEventListener('keydown', function (event) {
@@ -617,6 +683,46 @@
             document.querySelector('.close-btn').addEventListener('keydown', function (event) {
                 if (event.key === 'Enter') {
                     closePopupSecond();
+                }
+            });
+
+            // Add focus trap for popup
+            function trapFocus(element) {
+                const focusableElements = element.querySelectorAll(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                const firstFocusable = focusableElements[0];
+                const lastFocusable = focusableElements[focusableElements.length - 1];
+
+                element.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        if (e.shiftKey) { // Shift + Tab
+                            if (document.activeElement === firstFocusable) {
+                                lastFocusable.focus();
+                                e.preventDefault();
+                            }
+                        } else { // Tab
+                            if (document.activeElement === lastFocusable) {
+                                firstFocusable.focus();
+                                e.preventDefault();
+                            }
+                        }
+                    }
+                    if (e.key === 'Escape') {
+                        closePopup();
+                    }
+                });
+            }
+
+            // Initialize focus trap for popups
+            document.addEventListener('DOMContentLoaded', function() {
+                const popup = document.getElementById('popup');
+                if (popup) {
+                    trapFocus(popup);
+                }
+                const popupSecond = document.getElementById('popupSecond');
+                if (popupSecond) {
+                    trapFocus(popupSecond);
                 }
             });
 
