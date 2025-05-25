@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Karma", sans-serif
+        }
+
+        .w3-bar-block .w3-bar-item {
+            padding: 20px
+        }
+
+
+
+        /* Style for the Read More button */
+        .read-more-btn {
+            background-color: #39853c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+
+
+        /* Popup container - can be anything you want */
+        .popup {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* Close button */
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .header-wrapper {
+            background: #fff;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 1px 1px 3px #eeeeee;
+        }
+
+
+
+        .country-list ul li {
+            list-style: none;
+        }
+
+        .mw-jump-link:not(:focus) {
+            display: block;
+            position: absolute !important;
+            clip: rect(1px, 1px, 1px, 1px);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            overflow: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        nav ul li {
+            list-style: none;
+            float: left;
+        }
+
+        #homeContent {
+            margin-top: 200px;
+        }
+
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-container input,
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .font-wrapper {
+            max-width: 1200px;
+            margin: auto;
+            max-width: 1200px;
+            margin: auto;
+            position: fixed;
+            right: 0;
+            margin: 20px;
+        }
+
+        .font-size {
+            margin-top: 10px;
+            float: right;
+        }
+
+        .small-font {
+            font-size: 12px;
+        }
+
+        .medium-font {
+            font-size: 16px;
+        }
+
+        .large-font {
+            font-size: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .desktop-nav {
+                display: none;
+            }
+        }
+
+        .w3-text-blue-grey>b {
+            color: #5b7684;
+            background: #fff;
+        }
+
+        .required-field,
+        .form-container span {
+            color: #e50000;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body class="small-font medium-font large-font">
+
+
+
+    <!-- Sidebar (hidden by default) -->
+    <header class="header">
+        <div class="nav-wrapper">
+            <nav class="navigation w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left"
+                style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+                <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button">Close Menu</a>
+                <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">Home</a>
+                <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a>
+                <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+                <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">Locations</a>
+                <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Top menu -->
+    <div class="mobile-nav w3-top">
+        <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+            <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+            <!-- <div class="w3-right w3-padding-16">Mail</div> -->
+            <div class="w3-center w3-padding-16">My Food</div>
+        </div>
+    </div>
+
+
+    <!-- Top menu -->
+    <div class="desktop-nav w3-top">
+        <div class="header-wrapper">
+            <a class="mw-jump-link" href="#homeContent">Jump to content</a>
+            <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+                <div class="w3-button w3-padding-16 w3-left" tabindex="0">Food Logo</div>
+                <nav class="w3-right w3-padding-16" style=" z-index:2;width:50%;min-width:300px" id="countryList">
+                    <ul>
+                        <li><a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">Home</a></li>
+                        <li><a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a></li>
+                        <li><a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a></li>
+                        <li><a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">Locations</a></li>
+                        <li><a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Top menu -->
+    <!-- <div class="w3-top">
+        <div class="header-wrapper">
+            <a class="mw-jump-link" href="#homeContent">Jump to content</a>
+            <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+                <div class="w3-button w3-padding-16 w3-left" tabindex="0">Food Logo</div>
+                <nav class="w3-right w3-padding-16" style=" z-index:2;width:50%;min-width:300px" id="countryList">
+                    <ul>
+                        <li><a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">Home</a></li>
+                        <li><a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a></li>
+                        <li><a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a></li>
+                        <li><a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">Locations</a></li>
+                        <li><a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div> -->
+
+
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+        <div class="w3-padding-16 w3-center font-size">
+            <label for="fontSize">Change Font Size: </label>
+            <select id="fontSize" onchange="changeFontSize()">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+            </select>
+        </div>
+
+        <!-- First Photo Grid-->
+        <div class="w3-row-padding w3-padding-16 w3-center" id="home">
+
+            <div class="w3-container w3-padding-32 w3-center">
+                <h1 class="banner-title">Accessibility is awesome!</h1><br>
+                <!-- <img src="https://www.w3schools.com/w3images/coffeehouse.jpg" alt="Me" class="w3-image"
+                    style="display:block;margin:auto" width="800" height="533"> -->
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores architecto quod unde expedita
+                    laborum sint tenetur quo facilis, earum ipsam repellat possimus nostrum animi fuga consequatur
+                    voluptates itaque minima, ullam assumenda quibusdam deleniti est nulla! Iusto dolorem amet quis
+                    consectetur quod. Quidem consectetur accusamus laboriosam earum vitae nemo ad quam placeat! Possimus
+                    quam dicta nostrum dolorem minus ea quas rerum enim, dolore, harum cumque quis culpa facere aut!
+                    Quos praesentium eligendi, consequatur adipisci quod quidem maiores culpa, nulla aliquid ad odit
+                    repellendus exercitationem? Eos expedita voluptatem sapiente modi fugit tempore incidunt illo est
+                    dolorem corporis, enim beatae temporibus, natus repudiandae dignissimos quibusdam ullam quod quae
+                    voluptate reprehenderit. Quaerat rem perferendis excepturi blanditiis reprehenderit modi cum eum ex
+                    labore in, cumque nisi magni, dolor eius tempore obcaecati, facere incidunt nostrum saepe.
+                    Asperiores temporibus culpa totam, magnam eveniet veniam ex id officiis, quas consequuntur ullam
+                    neque. Reiciendis, dicta culpa. Minus illum vero unde, eligendi iure quam repellendus, similique ex
+                    dolor, nostrum exercitationem soluta! Maxime perspiciatis suscipit minus expedita, hic dolores
+                    impedit sunt, aspernatur fuga dignissimos fugit pariatur doloremque placeat sint. Dolor minus
+                    explicabo adipisci asperiores, distinctio excepturi officiis repudiandae recusandae voluptas
+                    consectetur neque reprehenderit alias, beatae minima aspernatur nihil repellat saepe. Temporibus.
+                </p>
+                <div class="w3-padding-32 home-content" id="homeContent">
+                    <h4><b>Some description about Good Food </b></h4>
+                    <h6><i>With Passion For Real, Good Food</i></h6>
+                    <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an
+                        interest
+                        of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt
+                        sed
+                        tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam
+                        non
+                        fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus
+                        vitae,
+                        ultricies congue gravida diam non fringilla.</p>
+                </div>
+            </div>
+
+
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/sandwich.jpg" alt="Sandwich" style="width:100%">
+                <h3>The Perfect Sandwich, A Real NYC Classic</h3>
+                <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                <button class="read-more-btn second" onclick="openPopup()">Read More</button>
+            </div>
+
+            <!-- Popup -->
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <span class="close-btn" onclick="closePopup()" tabindex="0">&times;</span>
+                    <h3>More About The Perfect Sandwich</h3>
+                    <p>This sandwich is a classic NYC staple, known for its delicious combination of ingredients...</p>
+                </div>
+            </div>
+
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/steak.jpg" alt="Steak" style="width:100%">
+                <h3>Let Me Tell You About This Steak</h3>
+                <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.
+                </p>
+            </div>
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/cherries.jpg" alt="Cherries" style="width:100%">
+                <h3>Cherries, interrupted</h3>
+                <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                <p>What else?</p>
+            </div>
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/wine.jpg" alt="Pasta and Wine" style="width:100%">
+                <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
+                <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                <button class="read-more-btn" onclick="openPopupSecond()">Read More</button>
+            </div>
+
+            <!-- Popup -->
+            <div id="popupSecond" class="popup">
+                <div class="popup-content">
+                    <span class="close-btn" onclick="closePopupSecond()" tabindex="0">&times;</span>
+                    <h3>More About The Perfect Sandwich</h3>
+                    <p>This sandwich is a classic NYC staple, known for its delicious combination of ingredients...</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Second Photo Grid-->
+        <div class="w3-row-padding w3-padding-16 w3-center">
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/popsicle.jpg" alt="Popsicle" style="width:100%">
+                <h3>All I Need Is a Popsicle</h3>
+                <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+            </div>
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/salmon.jpg" alt="Salmon" style="width:100%">
+                <h3>Salmon For Your Skin</h3>
+                <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.
+                </p>
+            </div>
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/sandwich.jpg" alt="Sandwich" style="width:100%">
+                <h3>The Perfect Sandwich, A Real Classic</h3>
+                <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+            </div>
+            <div class="w3-quarter">
+                <img src="https://www.w3schools.com/w3images/croissant.jpg" alt="Croissant" style="width:100%">
+                <h3>Le French</h3>
+                <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <!-- <div class="w3-center w3-padding-32">
+            <div class="w3-bar">
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+                <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+            </div>
+        </div> -->
+
+        <hr id="about">
+
+        <!-- About Section -->
+        <div class="w3-container w3-padding-32 w3-center">
+            <h3>About Me, The Food Man</h3><br>
+            <img src="https://www.w3schools.com/w3images/chef.jpg" alt="Me" class="w3-image"
+                style="display:block;margin:auto" width="800" height="533">
+            <div class="w3-padding-32">
+                <h4><b>I am Who I Am!</b></h4>
+                <h6><i>With Passion For Real, Good Food</i></h6>
+                <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest
+                    of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed
+                    tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non
+                    fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
+                    ultricies congue gravida diam non fringilla.</p>
+            </div>
+        </div>
+        <hr id="countryList">
+
+        <!-- About Section -->
+        <div class="w3-container w3-padding-32 w3-center">
+            <h3>Our Service Locations | Country List</h3><br>
+            <img src="https://www.w3schools.com/w3images/sailboat.jpg" alt="Me" class="w3-image"
+                style="display:block;margin:auto" width="800" height="533">
+            <div class="country-list w3-padding-32">
+                <ul>
+                    <li>Our Service Location: <a href="">USA</a></li>
+                    <li>Our Service Location: <a href="">Canada</a></li>
+                    <li>Our Service Location: <a href="">Mexico</a></li>
+                    <li>Our Service Location: <a href="">Brazil</a></li>
+                    <li>Our Service Location: <a href="">Argentina</a></li>
+                    <li>Our Service Location: <a href="">UK</a></li>
+                    <li>Our Service Location: <a href="">France</a></li>
+                    <li>Our Service Location: <a href="">Germany</a></li>
+                    <li>Our Service Location: <a href="">Italy</a></li>
+                    <li>Our Service Location: <a href="">Spain</a></li>
+                    <li>Our Service Location: <a href="">Australia</a></li>
+                </ul>
+            </div>
+            <hr id=" contact">
+            <div class="w3-container w3-padding-64" id="home">
+                <h1>Contact</h1><br>
+                <p>We offer full-service catering for any event, large or small. We understand your
+                    needs and we will
+                    cater the food
+                    to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate
+                    to contact us.
+                </p>
+                <p class="w3-text-blue-grey w3-large"><b>Catering Service, 42nd Living St, 43043 New
+                        York, NY</b></p>
+                <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you
+                    can send us a
+                    message here:
+                </p>
+                <div class="form-container">
+                    <form action="/action_page.php" target="_blank">
+                        <h4>Required fields are in <span>red</span> and marked with <span>*</span></h4>
+                        <p>
+                            <label class="required-field">Name *</label>
+                            <input class="w3-input w3-padding-16" type="text" id="name" placeholder="Name" required
+                                name="Name">
+                        </p>
+                        <p>
+                            <label for="people">How many people</label>
+                            <input class="w3-input w3-padding-16" type="number" id="people"
+                                placeholder="How many people" name="People">
+                        </p>
+                        <p>
+                            <label class="required-field">Date and time *</label>
+                            <input class="w3-input w3-padding-16" type="datetime-local" id="date"
+                                placeholder="Date and time" required name="date" value="2020-11-16T20:00">
+                        </p>
+                        <p>
+                            <label for="message">Message / Special requirements</label>
+                            <input class="w3-input w3-padding-16" type="text" id="message"
+                                placeholder="Message / Special requirements" required name="Message">
+                        </p>
+                        <p>
+                            <button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            </hr>
+
+            <!-- Footer -->
+            <footer class="w3-row-padding w3-padding-32">
+                <div class="w3-third">
+                    <h3>FOOTER</h3>
+                    <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta
+                        lectus vitae,
+                        ultricies
+                        congue gravida diam non fringilla.</p>
+                    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                </div>
+
+                <div class="w3-third">
+                    <h3>BLOG POSTS</h3>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-padding-16">
+                            <img alt="workshop" src="https://www.w3schools.com/w3images/workshop.jpg"
+                                class="w3-left w3-margin-right" style="width:50px">
+                            <span class="w3-large">Lorem</span><br>
+                            <span>Sed mattis nunc</span>
+                        </li>
+                        <li class="w3-padding-16">
+                            <img alt="gondol" src="https://www.w3schools.com/w3images/gondol.jpg"
+                                class="w3-left w3-margin-right" style="width:50px">
+                            <span class="w3-large">Ipsum</span><br>
+                            <span>Praes tinci sed</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w3-third w3-serif">
+                    <h3>POPULAR TAGS</h3>
+                    <p>
+                        <span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">New York</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dinner</span>
+                        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Salmon</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">France</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Drinks</span>
+                        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Ideas</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Flavors</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Cuisine</span>
+                        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Chicken</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dressing</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fried</span>
+                        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fish</span> <span
+                            class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Duck</span>
+                    </p>
+                </div>
+
+            </footer>
+
+            <!-- End page content -->
+        </div>
+
+        <script>
+            // Script to open and close sidebar
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+            }
+
+            function openPopup() {
+                document.getElementById("popup").style.display = "block";
+            }
+
+            function closePopup() {
+                document.getElementById("popup").style.display = "none";
+            }
+            // Add event listener for keydown event
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    closePopup();
+                }
+            });
+
+            // Ensure the close button is focusable and can be activated with the keyboard
+            document.querySelector('.close-btn').addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    closePopup();
+                }
+            });
+
+
+            function openPopupSecond() {
+                document.getElementById("popupSecond").style.display = "block";
+            }
+
+            function closePopupSecond() {
+                document.getElementById("popupSecond").style.display = "none";
+            }
+
+
+
+            // Add event listener for keydown event
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    closePopupSecond();
+                }
+            });
+
+            // Ensure the close button is focusable and can be activated with the keyboard
+            document.querySelector('.close-btn').addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    closePopupSecond();
+                }
+            });
+
+
+
+            document.querySelector('.close-btn').addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    closePopupSecond();
+                }
+            });
+
+            function changeFontSize() {
+                const fontSize = document.getElementById('fontSize').value;
+                const body = document.body;
+
+                body.classList.remove('small-font', 'medium-font', 'large-font');
+
+                switch (fontSize) {
+                    case 'small':
+                        body.classList.add('small-font');
+                        break;
+                    case 'medium':
+                        body.classList.add('medium-font');
+                        break;
+                    case 'large':
+                        body.classList.add('large-font');
+                        break;
+                    default:
+                        body.classList.add('medium-font');
+                }
+            }
+
+            // Set default font size on page load
+            document.addEventListener('DOMContentLoaded', function () {
+                changeFontSize();
+            });
+
+        </script>
+
+</body>
+
+</html>
