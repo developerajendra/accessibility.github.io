@@ -54,6 +54,24 @@
         .demo-links li a:active {
             transform: translateY(0);
         }
+        
+        .demo-description {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            border-left: 4px solid #1a73e8;
+        }
+        
+        .demo-description ul {
+            margin: 1rem 0 0 1.5rem;
+            padding: 0;
+        }
+        
+        .demo-description li {
+            margin: 0.5rem 0;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
@@ -63,9 +81,18 @@
             <ul class="demo-links">
                 <li><a href="good-web.html" target="_blank" rel="noopener noreferrer">Good Web Example</a></li>
                 <li><a href="bad-web.html" target="_blank" rel="noopener noreferrer">Bad Web Example</a></li>
+                <li><a href="color-contrast.html" target="_blank" rel="noopener noreferrer">Color Contrast Examples</a></li>
                 <li><a href="text-large.html" target="_blank" rel="noopener noreferrer">Large Text Example</a></li>
                 <li><a href="text-small.html" target="_blank" rel="noopener noreferrer">Small Text Example</a></li>
             </ul>
+            <div class="demo-description">
+                <p><strong>Note:</strong> Each example opens in a new tab and demonstrates different aspects of web accessibility:</p>
+                <ul>
+                    <li>Good vs Bad web examples showcase general accessibility practices</li>
+                    <li>Color contrast examples demonstrate WCAG compliant color combinations</li>
+                    <li>Text size examples show the importance of readable typography</li>
+                </ul>
+            </div>
         </nav>
     </div>
 </body>
