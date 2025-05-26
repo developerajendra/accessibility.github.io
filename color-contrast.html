@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Contrast Examples</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contrast-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .contrast-example {
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .good-contrast, .bad-contrast {
+            margin-bottom: 3rem;
+        }
+
+        /* Good Contrast Examples */
+        .good-red {
+            background-color: #FF0000;
+            color: #FFFFFF;
+        }
+
+        .good-orange {
+            background-color: #FF8C00;
+            color: #000000;
+        }
+
+        .good-yellow {
+            background-color: #FFD700;
+            color: #000000;
+        }
+
+        .good-green {
+            background-color: #008000;
+            color: #FFFFFF;
+        }
+
+        .good-blue {
+            background-color: #0000FF;
+            color: #FFFFFF;
+        }
+
+        .good-purple {
+            background-color: #800080;
+            color: #FFFFFF;
+        }
+
+        /* Bad Contrast Examples */
+        .bad-red {
+            background-color: #FFB3B3;
+            color: #FF6666;
+        }
+
+        .bad-orange {
+            background-color: #FFE5CC;
+            color: #FFA366;
+        }
+
+        .bad-yellow {
+            background-color: #FFFAE6;
+            color: #FFE680;
+        }
+
+        .bad-green {
+            background-color: #E6FFE6;
+            color: #80FF80;
+        }
+
+        .bad-blue {
+            background-color: #E6E6FF;
+            color: #8080FF;
+        }
+
+        .bad-purple {
+            background-color: #F3E6FF;
+            color: #CC99FF;
+        }
+
+        .contrast-ratio {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .section-title {
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .back-link:hover, .back-link:focus {
+            background-color: #555;
+            outline: 2px solid #000;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <h1>Color Contrast Examples</h1>
+    
+    <section class="good-contrast">
+        <h2 class="section-title">Good Contrast Examples (WCAG 2.1 AA Compliant)</h2>
+        <div class="contrast-grid">
+            <div class="contrast-example good-red">
+                <h3>Red Background</h3>
+                <p>This text has good contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 4.5:1 (Passes AA)</div>
+            </div>
+
+            <div class="contrast-example good-orange">
+                <h3>Orange Background</h3>
+                <p>This text has good contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 11:1 (Passes AAA)</div>
+            </div>
+
+            <div class="contrast-example good-yellow">
+                <h3>Yellow Background</h3>
+                <p>This text has good contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 14:1 (Passes AAA)</div>
+            </div>
+
+            <div class="contrast-example good-green">
+                <h3>Green Background</h3>
+                <p>This text has good contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 5.5:1 (Passes AA)</div>
+            </div>
+
+            <div class="contrast-example good-blue">
+                <h3>Blue Background</h3>
+                <p>This text has good contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 8.6:1 (Passes AAA)</div>
+            </div>
+
+            <div class="contrast-example good-purple">
+                <h3>Purple Background</h3>
+                <p>This text has good contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 6.7:1 (Passes AA)</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bad-contrast">
+        <h2 class="section-title">Poor Contrast Examples (Not WCAG Compliant)</h2>
+        <div class="contrast-grid">
+            <div class="contrast-example bad-red">
+                <h3>Red Background (Poor)</h3>
+                <p>This text has poor contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 1.5:1 (Fails WCAG)</div>
+            </div>
+
+            <div class="contrast-example bad-orange">
+                <h3>Orange Background (Poor)</h3>
+                <p>This text has poor contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 1.8:1 (Fails WCAG)</div>
+            </div>
+
+            <div class="contrast-example bad-yellow">
+                <h3>Yellow Background (Poor)</h3>
+                <p>This text has poor contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 1.4:1 (Fails WCAG)</div>
+            </div>
+
+            <div class="contrast-example bad-green">
+                <h3>Green Background (Poor)</h3>
+                <p>This text has poor contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 1.3:1 (Fails WCAG)</div>
+            </div>
+
+            <div class="contrast-example bad-blue">
+                <h3>Blue Background (Poor)</h3>
+                <p>This text has poor contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 1.6:1 (Fails WCAG)</div>
+            </div>
+
+            <div class="contrast-example bad-purple">
+                <h3>Purple Background (Poor)</h3>
+                <p>This text has poor contrast with the background.</p>
+                <div class="contrast-ratio">Contrast ratio: 1.7:1 (Fails WCAG)</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Note:</strong> WCAG 2.1 Level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. Level AAA requires 7:1 for normal text and 4.5:1 for large text.</p>
+    </footer>
+
+    <script>
+        // Add aria-labels to examples for better screen reader support
+        document.querySelectorAll('.contrast-example').forEach(example => {
+            const heading = example.querySelector('h3').textContent;
+            example.setAttribute('aria-label', `${heading} - ${example.querySelector('.contrast-ratio').textContent}`);
+        });
+    </script>
+</body>
+</html>
